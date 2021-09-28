@@ -22,20 +22,25 @@ class InstagramBot():
     
     def login(self):
         self.browser.get("https://instagram.com/accounts/login")
-
+        
+        #login details area
         login_objects = self.WaitForObjects(By.CSS_SELECTOR,"input._2hvTZ.pexuQ.zyHYP")
 
         login_objects[0].send_keys(self.username)
         login_objects[1].send_keys(self.password)
         login_objects[1].send_keys(Keys.ENTER)
         sleep(5)
-
+        
+        #pre window 1
         self.browser.find_element_by_xpath("/html/body/div[1]/section/main/div/div/div/div/button").click()
         sleep(2)
         
+        #pre window 2
         self.browser.find_element_by_xpath("/html/body/div[5]/div/div/div/div[3]/button[2]").click()
         sleep(2)
-    
+        
+        #searching for hashtags
+        
     def search_hashtags(self, hashtag):
         self.browser.get(f"https://www.instagram.com/explore/tags/{hashtag}")
         sleep(2)
@@ -55,4 +60,4 @@ Bot = InstagramBot("add here your username","here your password")
 
 Bot.login()
 
-Bot.search_hashtags("crypto")
+Bot.search_hashtags("add here your hashtag")
